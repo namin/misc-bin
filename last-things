@@ -1,0 +1,6 @@
+#!/usr/bin/env zsh
+
+source /opt/anaconda3/etc/profile.d/conda.sh
+conda activate things
+
+things-cli --json search "" | jq -r 'map(select(.project_title != null)) | sort_by(.created)[] | "- [ ] \(.created) \(.title) (\(.project_title))"'
