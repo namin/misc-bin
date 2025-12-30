@@ -1,3 +1,4 @@
 #!/bin/bash
 # Requires: brew install terminal-notifier
-terminal-notifier -message "${1:-done}" -activate com.apple.Terminal
+"$@"
+terminal-notifier -message "${*:-done}" -activate com.apple.Terminal
