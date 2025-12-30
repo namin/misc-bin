@@ -1,4 +1,9 @@
 #!/usr/bin/env zsh
+# Requires:
+#   brew install jq
+#   conda create -n things python
+#   conda activate things
+#   pip install things-cli
 
 source /opt/anaconda3/etc/profile.d/conda.sh
 conda activate things
