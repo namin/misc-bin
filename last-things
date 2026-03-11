@@ -5,7 +5,12 @@
 #   conda activate things
 #   pip install things-cli
 
-source /opt/anaconda3/etc/profile.d/conda.sh
+for conda_sh in "$HOME/miniconda3" "$HOME/anaconda3" "/opt/anaconda3" "/opt/homebrew/Caskroom/miniconda/base" "/opt/miniconda3"; do
+  if [[ -f "$conda_sh/etc/profile.d/conda.sh" ]]; then
+    source "$conda_sh/etc/profile.d/conda.sh"
+    break
+  fi
+done
 conda activate things
 
 things-cli --json search "" | jq -r 'map(select(.project_title != null)) | sort_by(.created)[] | "- [ ] \(.created) \(.title) (\(.project_title))"'
